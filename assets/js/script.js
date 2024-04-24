@@ -8,3 +8,24 @@ $(document).ready(function() {
     });
 
 });
+
+// gestion de la modale
+
+
+
+    let modal = document.getElementById('myModal');
+    let linkContact = document.getElementById("menu-item-42");
+    
+           // Ouverture de la modale au clic
+    linkContact.onclick = function(event) {
+        event.preventDefault();
+       modal.style.display = "block";
+    }
+
+ //Fermeture de la modale au clic n'importe où à l'extérieur
+    window.onclick = function(event) {
+       if (event.target == modal) {
+          modal.style.display = "none";
+       }
+    }
+       

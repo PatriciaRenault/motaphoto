@@ -1,8 +1,22 @@
-@keyframes slide-up{
-    from{
-        top: -30%
+// keyframe menu burger
+
+@keyframes fade-in-top {
+    from {
+      opacity: 0;
+      transform: translateY(-350px);
     }
-    to{
-        top: 100%;
+    to {
+      opacity: 1;
+      transform: translateY(0);
     }
 }
+
+// keyframe Modale
+@keyframes fadeInModal {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
