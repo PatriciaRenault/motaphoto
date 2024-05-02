@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>MotaPhoto</title>
         <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-        <?php wp_head(); ?>
+        <?php wp_head(); ?>             <!--ajoute dynamiquement des éléments à l'en-tête du site.-->
     </head>
 
     <body <?php body_class(); ?>>

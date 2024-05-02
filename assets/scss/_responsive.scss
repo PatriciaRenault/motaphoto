@@ -102,13 +102,69 @@
 @media screen and (max-width: $mobile) {
   .modal-content {
       max-width: 20rem;
-      height: auto;
-
-
-          
+      height: auto;   
       }
       .modal img {
         height: 55px;
       }
+
+  }
+
+  // single
+  @media screen and (max-width: $tablet) {
+
+    .section-single {
+      width: 100vw;
+  }
+
+  .detail-photo {
+      flex-direction: column-reverse;
+      width: 100vw;
+      margin:auto;
+  }
+
+  .affichage-photo {
+      flex-wrap: wrap;
+      align-self: center;
+      width: 70vw;
+  }
+
+  .description {
+      align-self: center;
+      width: 80vw;
+      border-bottom: none;
+      padding: 0;
+  }
+
+  .title-photo {
+      font-size: 44px;
+      line-height: 7vh;
+      margin: 2vh 0;
+  }
+
+  .thumbnail_nav{
+    display:none;
+  }
+  .contact_nav {
+    flex-direction: column;
+    margin: auto;
+    align-items: normal;
+    width: 70vw;
+}
+
+.contact{
+    width: 70vw;
+    padding: 0;
+    margin: 0;
+    flex-direction: column-reverse;
+    button {
+      width: 70%;
+      margin: 10px 0 10px 0;
+    }
+    p{
+      width: auto;
+    }
+}
+
 
   }

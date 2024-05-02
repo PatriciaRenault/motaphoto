@@ -12,9 +12,11 @@ Text Domain: nathalie-mota
 /* CSS pour les Fonts  */
 
 @import "_fonts";
+@import "variables/_colors";
 @import"_keyframes";
 @import "_header";
 @import "_footer";
-@import "_responsive";
 @import "_modal";
+@import "_single-photos";
+@import "_responsive";
 

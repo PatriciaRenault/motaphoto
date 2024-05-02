@@ -1,81 +1,23 @@
-/* CSS pour les Fonts  */
 
+/*----------------------------------------------------------------------- 
+# Gestion des fonts
+-----------------------------------------------------------------------*/
 @font-face {
-    font-family: 'PoppinsBold';
-    src: url('../fonts/poppins-bold-webfont.woff2') format('woff2'),
-         url('../fonts/poppins-bold-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+    font-family: "Space Mono";
+    src: url("assets/fonts/SpaceMono-Regular.ttf") format("truetype");
     font-display: swap;
-}
-
-@font-face {
-    font-family: 'PoppinsItalic';
-    src: url('../fonts/poppins-italic-webfont.woff2') format('woff2'),
-         url('../fonts/poppins-italic-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+  }
+  @font-face {
+    font-family: "Poppins";
+    src: url("assets/fonts/Poppins-Regular.ttf") format("truetype");
     font-display: swap;
-}
-
-@font-face {
-    font-family: 'PoppinsMedium';
-    src: url('../fonts/poppins-medium-webfont.woff2') format('woff2'),
-         url('../fonts/poppins-medium-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'PoppinsRegular';
-    src: url('../fonts/poppins-regular-webfont.woff2') format('woff2'),
-         url('../fonts/poppins-regular-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-}
-
-
-@font-face {
-    font-family: 'space_monobold';
-    src: url('../fonts/spacemono-bold-webfont.woff2') format('woff2'),
-         url('../fonts/spacemono-bold-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'space_monobold_italic';
-    src: url('../fonts/spacemono-bolditalic-webfont.woff2') format('woff2'),
-         url('../fonts/spacemono-bolditalic-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'space_monoitalic';
-    src: url('../fonts/spacemono-italic-webfont.woff2') format('woff2'),
-         url('../fonts/spacemono-italic-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'space_monoregular';
-    src: url('../fonts/spacemono-regular-webfont.woff2') format('woff2'),
-         url('../fonts/spacemono-regular-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-}
-
-/* Appel des font family hébergées localement */
-
-body {
-    font-family: 'Poppins', sans-serif;
-    font-family: 'SpaceMono', sans-serif;
-}
+  }
+  body {
+    font-family: "Space Mono", sans-serif;
+  }
+  
+  .modal,
+  .selectors 
+  .option {
+    font-family: "Poppins", sans-serif;
+  }

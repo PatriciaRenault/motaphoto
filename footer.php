@@ -1,5 +1,6 @@
 </main>
-
+ <!-- integration de la popup de contact  -->
+ <?php get_template_part('/template-parts/modal');?>
 <footer class="navfooter">
     <div class="navfooter__menu">
         <?php
@@ -13,11 +14,10 @@
        
     </div>
 </div>
- <!-- integration de la popup de contact  -->
- <?php get_template_part('/template-parts/modal');?>
+ 
 </footer>
 
-<?php wp_footer(); ?>
+<?php wp_footer(); ?>       <!--ajoute dynamiquement des éléments au footer du site.-->
 
 </body>
 </html>

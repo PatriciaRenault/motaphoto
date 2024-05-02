@@ -10,67 +10,26 @@ Tags: Nathalie Mota, Photographie, Évènement...
 Text Domain: nathalie-mota
 */
 /* CSS pour les Fonts  */
-/* CSS pour les Fonts  */
+/*----------------------------------------------------------------------- 
+# Gestion des fonts
+-----------------------------------------------------------------------*/
 @font-face {
-  font-family: "PoppinsBold";
-  src: url("../fonts/poppins-bold-webfont.woff2") format("woff2"), url("../fonts/poppins-bold-webfont.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
+  font-family: "Space Mono";
+  src: url("assets/fonts/SpaceMono-Regular.ttf") format("truetype");
   font-display: swap;
 }
 @font-face {
-  font-family: "PoppinsItalic";
-  src: url("../fonts/poppins-italic-webfont.woff2") format("woff2"), url("../fonts/poppins-italic-webfont.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
+  font-family: "Poppins";
+  src: url("assets/fonts/Poppins-Regular.ttf") format("truetype");
   font-display: swap;
 }
-@font-face {
-  font-family: "PoppinsMedium";
-  src: url("../fonts/poppins-medium-webfont.woff2") format("woff2"), url("../fonts/poppins-medium-webfont.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "PoppinsRegular";
-  src: url("../fonts/poppins-regular-webfont.woff2") format("woff2"), url("../fonts/poppins-regular-webfont.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "space_monobold";
-  src: url("../fonts/spacemono-bold-webfont.woff2") format("woff2"), url("../fonts/spacemono-bold-webfont.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "space_monobold_italic";
-  src: url("../fonts/spacemono-bolditalic-webfont.woff2") format("woff2"), url("../fonts/spacemono-bolditalic-webfont.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "space_monoitalic";
-  src: url("../fonts/spacemono-italic-webfont.woff2") format("woff2"), url("../fonts/spacemono-italic-webfont.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "space_monoregular";
-  src: url("../fonts/spacemono-regular-webfont.woff2") format("woff2"), url("../fonts/spacemono-regular-webfont.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-/* Appel des font family hébergées localement */
 body {
+  font-family: "Space Mono", sans-serif;
+}
+
+.modal,
+.selectors .option {
   font-family: "Poppins", sans-serif;
-  font-family: "SpaceMono", sans-serif;
 }
 
 @keyframes fade-in-top {
@@ -135,7 +94,7 @@ nav li {
 }
 nav a {
   text-decoration: none;
-  font-family: "space-mono";
+  font-family: "space mono";
   font-size: 16px;
   color: #000000;
 }
@@ -172,6 +131,222 @@ nav a:hover {
 .navfooter__menu .menu-footer a {
   text-decoration: none;
   color: black;
+}
+
+/* Modale  (background) */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.7);
+  animation: fadeInModal 1s forwards;
+}
+
+/* Contenu modale */
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #fefefe;
+  margin: 5% auto; /* 15% from the top and centered */
+  padding: 0px;
+  border: 1px solid #888;
+  width: 597px;
+  height: 769px;
+}
+
+.formulaire-contact {
+  color: #313144;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  width: 20rem;
+}
+.formulaire-contact label {
+  font-family: "poppins", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+.formulaire-contact input {
+  height: 40px;
+  width: 263px;
+  border-radius: 8px;
+  border: solid #B8BBC2 1px;
+  margin-top: 10px;
+}
+.formulaire-contact input[type=submit] {
+  height: 50px;
+  width: 270px;
+  border-radius: 2px;
+  background-color: #D8D8D8;
+  border: solid #D8D8D8 2px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  margin-top: 10px;
+  margin-bottom: 0px;
+  font-size: 14px;
+}
+.formulaire-contact input[type=submit]:hover {
+  background-color: #cacaca;
+}
+.formulaire-contact textarea {
+  height: 142px;
+  width: 263px;
+  border-radius: 8px;
+  border: solid #B8BBC2 1px;
+}
+
+.section-single {
+  display: flex;
+  flex-direction: column;
+  height: 85vh;
+}
+
+.detail-photo {
+  display: flex;
+  justify-content: space-between;
+  height: 70vh;
+  margin-top: 20px;
+  margin: 1% 10% 0 10%;
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 50%;
+  padding: 0 20px 0 0;
+}
+.description ul {
+  list-style-type: none;
+  padding: 0 0 20px 0;
+  border-bottom: 1px solid black;
+  margin: 0;
+}
+.description li {
+  font-size: 14px;
+  font-weight: normal;
+  margin: 10px 0 10px 0;
+  text-transform: uppercase;
+  line-height: 30px;
+}
+.description li a {
+  color: black;
+  text-decoration: none;
+}
+.description a:hover {
+  color: #E00000;
+}
+
+.title-photo {
+  font-family: "Space Mono", sans-serif;
+  font-size: 66px;
+  font-style: italic;
+  text-transform: uppercase;
+  font-weight: 200;
+  line-height: 60px;
+  margin: 10px 0 10px 0;
+}
+
+.affichage-photo {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  height: 70vh;
+  width: 50%;
+  margin: 0;
+}
+.affichage-photo img {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.contact_nav {
+  display: flex;
+  justify-content: space-between;
+  height: 118px;
+  margin: 0 10%;
+  border-bottom: 1px solid black;
+}
+
+.contact {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  width: 50%;
+  padding: 0 20px 0 0;
+}
+.contact p {
+  font-size: 14px;
+  font-weight: 100;
+  width: 50%;
+  font-family: "Space Mono";
+}
+.contact button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Space Mono", sans-serif;
+  border: none;
+  width: 40%;
+  height: 50px;
+  cursor: pointer;
+  background-color: #D8D8D8;
+  border-radius: 5px;
+}
+.contact button:hover {
+  color: white;
+  background-color: black;
+  transition: 1s ease-in-out;
+}
+
+.thumbnail_nav {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  gap: 10px;
+}
+
+.post-thumbnail {
+  display: flex;
+  width: 80px;
+  height: 70px;
+}
+.post-thumbnail #hover-image {
+  width: 100%;
+}
+.post-thumbnail #hover-image img {
+  width: 80px;
+  height: 70px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.thumbnail-link {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.arrow {
+  display: flex;
+  justify-content: space-between;
 }
 
 /* Menu */
@@ -254,73 +429,51 @@ nav a:hover {
     height: 55px;
   }
 }
-/* Modale  (background) */
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 100;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0, 0, 0); /* Fallback color */
-  background-color: rgba(0, 0, 0, 0.7);
-  animation: fadeInModal 1s forwards;
-}
-
-/* Contenu modale */
-.modal-content {
-  background-color: #fefefe;
-  margin: 15% auto; /* 15% from the top and centered */
-  padding: 0px;
-  border: 1px solid #888;
-  width: 597px;
-  height: 800px;
-}
-
-.formulaire-contact {
-  color: #313144;
-  margin-top: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  width: 20rem;
-}
-.formulaire-contact label {
-  font-family: "poppins", sans-serif;
-  font-size: 14px;
-  font-weight: 500;
-  margin-bottom: 5px;
-}
-.formulaire-contact input {
-  height: 40px;
-  width: 263px;
-  border-radius: 8px;
-  border: solid #B8BBC2 1px;
-  margin-top: 10px;
-}
-.formulaire-contact input[type=submit] {
-  height: 50px;
-  width: 270px;
-  border-radius: 2px;
-  background-color: #D8D8D8;
-  border: solid #D8D8D8 2px;
-  display: flex;
-  justify-content: center;
-  align-content: center;
-  margin-top: 10px;
-  margin-bottom: 0px;
-  font-size: 14px;
-}
-.formulaire-contact input[type=submit]:hover {
-  background-color: #cacaca;
-}
-.formulaire-contact textarea {
-  height: 142px;
-  width: 263px;
-  border-radius: 8px;
-  border: solid #B8BBC2 1px;
+@media screen and (max-width: 768px) {
+  .section-single {
+    width: 100vw;
+  }
+  .detail-photo {
+    flex-direction: column-reverse;
+    width: 100vw;
+    margin: auto;
+  }
+  .affichage-photo {
+    flex-wrap: wrap;
+    align-self: center;
+    width: 70vw;
+  }
+  .description {
+    align-self: center;
+    width: 80vw;
+    border-bottom: none;
+    padding: 0;
+  }
+  .title-photo {
+    font-size: 44px;
+    line-height: 7vh;
+    margin: 2vh 0;
+  }
+  .thumbnail_nav {
+    display: none;
+  }
+  .contact_nav {
+    flex-direction: column;
+    margin: auto;
+    align-items: normal;
+    width: 70vw;
+  }
+  .contact {
+    width: 70vw;
+    padding: 0;
+    margin: 0;
+    flex-direction: column-reverse;
+  }
+  .contact button {
+    width: 70%;
+    margin: 10px 0 10px 0;
+  }
+  .contact p {
+    width: auto;
+  }
 }/*# sourceMappingURL=style.css.map */
