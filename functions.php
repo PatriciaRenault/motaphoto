@@ -20,7 +20,8 @@ function enqueue_motaphoto_styles() {
 // Action pour ajouter la fonction à la file d'attente des styles
 add_action('wp_enqueue_scripts', 'enqueue_motaphoto_styles');
 
-
+ // Bibliothèque Font Awesome
+ wp_enqueue_style('fontawesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css', array());
 
 // Fonction pour enregistrer les menus de navigation
 function register_my_menus() {

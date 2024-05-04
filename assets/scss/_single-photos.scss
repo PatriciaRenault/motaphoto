@@ -134,3 +134,21 @@
     display: flex;
     justify-content: space-between;
 }   
+
+.section_apparentees {
+    width: 100%;
+    height: auto;
+    border-top: 1px solid #000;
+    padding-top: 4rem;
+    margin-top: 1rem;
+
+    h3 {
+        font-family: 'Space Mono', monospace;
+        font-size: 1.125rem;
+        font-weight: 400;
+        text-transform: uppercase;
+        padding-bottom: 3.25rem;
+        margin-left: 10%;
+
+    }
+}
