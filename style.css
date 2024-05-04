@@ -444,6 +444,33 @@ nav a:hover {
   opacity: 1;
 }
 
+.banner-style {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+.banner-style img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.titre-header {
+  width: 68vw;
+  position: absolute;
+  top: 42%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.titre-header img {
+  width: 95%;
+}
+
 /* Menu */
 @media screen and (max-width: 768px) {
   .logo {
@@ -591,5 +618,17 @@ nav a:hover {
   }
   .photos_list .post-container {
     width: 100%;
+  }
+}
+@media screen and (max-width: 465px) {
+  .banner-style {
+    width: 100%;
+    height: 15rem;
+  }
+}
+@media screen and (min-width: 465px) and (max-width: 1024px) {
+  .banner {
+    width: 100%;
+    height: 30rem;
   }
 }/*# sourceMappingURL=style.css.map */

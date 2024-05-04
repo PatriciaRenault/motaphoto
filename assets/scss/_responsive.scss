@@ -207,3 +207,23 @@
 
 
 }
+
+
+//page d'acceuil
+
+@media screen and (max-width: $mobile){
+  .banner-style{
+  width: 100%;
+  height: 15rem;
+  
+
+}
+}
+
+@media screen and (min-width: $mobile) and (max-width: $laptop){
+  .banner{
+  width: 100%;
+  height: 30rem;
+  
+}
+}
