@@ -133,6 +133,20 @@ nav a:hover {
   color: black;
 }
 
+.section_photos {
+  display: flex;
+  width: 100%;
+  gap: 20px 37px;
+  justify-content: center;
+  margin: 0 auto;
+}
+.section_photos h3 {
+  font-size: 18px;
+  text-transform: uppercase;
+  font-weight: 300;
+  margin: 60px 0;
+}
+
 /* Modale  (background) */
 .modal {
   display: none;
@@ -367,6 +381,7 @@ nav a:hover {
 
 .photos_list {
   display: flex;
+  flex-wrap: wrap;
   width: 80%;
   gap: 20px 37px;
   justify-content: center;

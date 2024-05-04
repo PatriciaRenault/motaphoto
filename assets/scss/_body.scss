@@ -1,0 +1,13 @@
+.section_photos {
+    display: flex;
+    width: 100%;
+    gap: 20px 37px;
+    justify-content: center;
+    margin: 0 auto;
+    h3 {
+        font-size: 18px;
+        text-transform: uppercase;
+        font-weight: 300;
+        margin: 60px 0;
+    }
+}

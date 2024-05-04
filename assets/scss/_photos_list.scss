@@ -3,6 +3,7 @@
 
 .photos_list {
     display: flex;
+    flex-wrap: wrap;
     width: 80%;
     gap: 20px 37px;
     justify-content: center;
@@ -15,7 +16,6 @@
         width: calc(50% - 18.5px);/* Deux colonnes avec un espace entre */
         aspect-ratio: 1/1;
 
-      
     }
 
     img {

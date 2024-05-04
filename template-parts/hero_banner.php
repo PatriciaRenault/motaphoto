@@ -1,32 +1,21 @@
 <!-- Bloc d'affichage d'une photo de la liste pour page accueil -->
 
 <div class="banner-style">
-    <?php 
-    $the_query = new WP_Query(array( 
-        'orderby' => 'rand',
-        'posts_per_page' => 1 ,
-        'post_type' => 'photos',
-        'format'=>'paysage',
-    ));
-    
-    if($the_query -> have_posts()):
+<?php
+        $post_id = 59; // ID du post pour afficher son image dans la bannière
+        $thumbnail_banner = get_the_post_thumbnail_url($post_id);  //Récupère l'URL de l'image mise en avant (miniature) du post 
 
-    // Boucle
-    
-    while ($the_query -> have_posts()) {
-        $the_query -> the_post();
-        the_post_thumbnail(); 
-    } 
+        if ($thumbnail_banner) {                                   //si une URL d'image a été récupérée avec succès
+?>
+            <img src="<?php echo $thumbnail_banner; ?>" alt="<?php echo  get_the_title($post_id); ?>">   <!--Affiche l'image de la bannière en utilisant l'URL -->
 
-    // Restoration des données
-    wp_reset_postdata();
-    ?>
+<?php 
+} 
+?>
     <div class="titre-header">
-        <img src="<?php echo get_template_directory_uri() . '/assets/images/titreHeader.png'; ?>" alt="Photographe event">
-        </div>
-    <?php else : ?>
-	<p><?php esc_html_e( 'Désolé, il n\'y a aucun post qui correspond à vos critères.' ); ?></p>
-    <?php endif; ?>
+        <img src="<?php echo get_template_directory_uri() . '/assets/images/titreHeader.png'; ?>" alt="Photographe event">      <!--Affiche l'image du titre -->
+    </div>
+    
         
         
 
