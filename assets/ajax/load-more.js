@@ -1,3 +1,5 @@
+/* script ajax permettant de charger plus de photos */
+
 console.log("load-more chargé");
 
 (function ($) {
