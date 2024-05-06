@@ -1,5 +1,5 @@
 
-<!-- recuperation des variables des taxonimies et des champs personnalisés -->
+<!-- recuperation des variables des taxonomies et des champs personnalisés -->
 <?php
 // recuperer les custom fields avec ACF
 	$refPhoto = get_field("reference");       //Récupère la valeur du champ personnalisé "reference" de la photo.
@@ -55,20 +55,21 @@
             // Récupère le post suivant
             $next_post = get_adjacent_post(false, '', false);  
             ?>  
-                     
+             <!-- affichage de la miniature de la publication. -->       
             <div class="post-thumbnail">
                 <div id="hover-image">
                     <div class="prev-thumbnail">
-                        <?php echo get_the_post_thumbnail($previous_post, 'thumbnail'); ?>
+                        <?php echo get_the_post_thumbnail($previous_post, 'thumbnail'); ?>   
                     </div>
                     <div class="next-thumbnail">
                         <?php echo get_the_post_thumbnail($next_post, 'thumbnail'); ?>
                     </div>
                 </div>
             </div>
+            <!-- lien vers le post précédent ou suivant et affichage des fleches-->
             <div class="thumbnail-link">
             <?php
-            // Affiche la miniature du post précédent s'il existe
+            // Affiche la miniature du post precedent s'il existe
             if ($previous_post) {
                 ?>
                 <div class="prev-nav">
@@ -98,8 +99,7 @@
     <div class="photos_list">
         <?php 
         // Récupére la catégorie de la photo actuellement affichée
-        $current_category = implode(', ', wp_get_post_terms(get_the_ID(), 'categorie', array('fields' => 'names')));
-        
+        $current_category = implode(', ', wp_get_post_terms(get_the_ID(), 'categorie', array('fields' => 'names')));    
         // Récupère l'ID du post actuel
         $current_post_id = get_the_ID();
          // On définit les arguments pour définir ce que l'on souhaite récupérer
@@ -107,7 +107,7 @@
             'post_type' => 'photos',
             'orderby' => 'rand',
             'posts_per_page' => 2,
-            'post__not_in' => array($current_post_id), // Exclure le post actuel de la liste
+            'post__not_in' => array($current_post_id),     // Exclure le post actuel de la liste
             'tax_query' => array(
                 array(                                     //spécifie une requête de taxonomie pour filtrer les publications par current_category.
                     'taxonomy' => 'categorie',             //spécifie la taxonomie pour filtrer les publications.
@@ -115,13 +115,10 @@
                     'terms' => $current_category,          //$current_category, contient le slug de la catégorie
                 ),
             ),
-        );
-        
-
+        );        
         // On exécute la WP Query
         $my_query = new WP_Query( $args );
-
-       // On lance la boucle !
+       // On lance la boucle 
         if( $my_query->have_posts() ) : while( $my_query->have_posts() ) : $my_query->the_post();
             get_template_part( 'template-parts/photo_block' );
         endwhile;
@@ -130,10 +127,6 @@
         // On réinitialise à la requête principale 
         wp_reset_postdata();
         ?>
-
-
-
-    </div>
-   
+    </div>  
 </section>
 <?php get_footer(); ?>

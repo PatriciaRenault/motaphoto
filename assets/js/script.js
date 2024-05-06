@@ -33,18 +33,21 @@ $(document).ready(function() {
     var btn = document.querySelector('.contact');
 
     // Ouverture de la modale au clic
-    btn.onclick = function() {
-    modal.style.display = "block";
-}
-// Référence
+    if(btn){
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
+    
+    // rempli automatiquement le champ RÉF. PHOTO 
 
-const refPhoto = document.querySelector('.ref').textContent;
-const btnCon = document.querySelector('.btn-contact');
-const inputRef = document.querySelector('#refphoto');
-btnCon.addEventListener('click', function(){
-    inputRef.value = refPhoto;
-});
-   
+        const refPhoto = document.querySelector('.ref').textContent;
+        const btnCon = document.querySelector('.btn-contact');
+        const inputRef = document.querySelector('#refphoto');
+        btnCon.addEventListener('click', function(){
+            inputRef.value = refPhoto;
+        });
+
+    }
 
 /*********** GESTION DE LA MINIATURE DANS SINGLE_PHOTO ***************/
 
