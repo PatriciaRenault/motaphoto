@@ -1,6 +1,7 @@
 </main>
  <!-- integration de la popup de contact  -->
  <?php get_template_part('/template-parts/modal');?>
+ <?php get_template_part('template-parts/lightbox');?>
 <footer class="navfooter">
     <div class="navfooter__menu">
         <?php

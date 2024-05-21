@@ -29,23 +29,23 @@ if ($categories && !is_wp_error($categories)) {
 ?>
 <!--afficher les informations de chaque publication dans une mise en page de type galerie-->
 <div class="post-container">
-    <img src="<?php echo $thumbnail_url; ?>" alt="<?php echo $post_title; ?>">
-    <div class="overlay">
-        <div class="reference"><?php echo $reference; ?></div>
-        <div class="categorie"><?php echo $categorie_name; ?></div>
-        <!--icône d'œil  lien vers la publication -->
-        <div class="eye-icon">
-            <a href="<?php echo $post_url; ?>">
-            <img src="<?php echo get_template_directory_uri() . '/assets/images/eye.png'; ?>"
-                    alt="Icône oeil">
-            </a>
-        </div>
-        <!-- icône de plein écran -->
-        <div class="expand-icon">
-        <img class="icon-fullscreen"
+    <div class="photo-thumbnail">
+        <img src="<?php echo $thumbnail_url; ?>" alt="<?php echo $post_title; ?>">
+        <div class="overlay">
+            <div class="reference"><?php echo $reference; ?></div>
+            <div class="categorie"><?php echo $categorie_name; ?></div>
+            <!--icône d'œil  lien vers la publication -->
+            <div class="eye-icon">
+                <a href="<?php echo $post_url; ?>">
+                    <img src="<?php echo get_template_directory_uri() . '/assets/images/eye.png'; ?>" alt="Icône oeil">
+                </a>
+            </div>
+            <!-- icône de plein écran -->
+            <div class="expand-icon">
+                <img class="icon-fullscreen"
                     src="<?php echo get_template_directory_uri() . '/assets/images/Icon_fullscreen.png'; ?>"
-                    alt="Icône Fullscreen">
-            </a>
+                     alt="Icône Fullscreen">
+            </div>
         </div>
     </div>
 </div>

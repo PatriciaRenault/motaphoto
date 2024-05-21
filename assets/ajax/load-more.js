@@ -1,6 +1,7 @@
 /* script ajax permettant de charger plus de photos */
 
-console.log("load-more chargé");
+
+console.log(ajax_object.ajaxurl);
 
 (function ($) {
     $(document).ready(function () {
@@ -10,6 +11,9 @@ console.log("load-more chargé");
       $("#load-more-btn").on("click", function () {        //ajoute un gestionnaire d'événements sur le clic du bouton avec l'ID `load-more-btn`. Lorsque ce bouton est cliqué, le code à l'intérieur de la fonction de rappel est exécuté.
 
         currentPage++; // Incrémentation de currentPage de 1, pour charger la page suivante
+        var category = $('select[name="category_filter"]').val();    
+        var format = $('select[name="format_filter"]').val();    
+        var order = $('select[name="sort_order"]').val();
         
         $.ajax({      
           type: "POST",   ////effectue une requête AJAX POST
@@ -18,13 +22,16 @@ console.log("load-more chargé");
           data: {
             action: "load_more_photos",   //l'action load_more_photo est  utilisée pour déclencher la fonction PHP qui gère la récupération et le chargement supplémentaire de photos via AJAX.
             paged: currentPage, // on souhaite recuperer la page actuelle
+            category_filter: category,
+            format_filter: format,
+            sort_order: order
           },
           // si la requete fonctionne
           success: function (res) {             
             $(".photos_list").append(res.html); // Ajoute le contenu à la galerie existante
-    
+            initLightbox(); 
             if (currentPage >= res.max) {  //s'il n'y a plus de photos on masque le bouton
-              $("#load-more").hide();
+              $("#load-more-btn").hide();
             }
           },
         });
