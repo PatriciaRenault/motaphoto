@@ -10,7 +10,7 @@ jQuery(document).ready(function ($) {
     //  requête AJAX vers le serveur en utilisant les données de filtrage sélectionnées par l'utilisateur.
     $.ajax({
       type: "GET",
-      url: afp_vars.afp_ajax_url,  //Spécifie l'URL vers laquelle la requête AJAX sera envoyée. Cette URL est stockée dans la variable afp_vars.afp_ajax_url et contient généralement l'URL vers le point d'accès AJAX de WordPress (admin-ajax.php).
+      url: ajax_object.ajax_url,  //Spécifie l'URL vers laquelle la requête AJAX sera envoyée. Cette URL est stockée dans la variable afp_vars.afp_ajax_url et contient généralement l'URL vers le point d'accès AJAX de WordPress (admin-ajax.php).
       dataType: "json",            //jQuery interprétera automatiquement la réponse de la requête AJAX comme étant un objet JSON.
       data: {
         action: "filter_photos",  //Spécifie l'action à effectuer côté serveur.
@@ -23,8 +23,8 @@ jQuery(document).ready(function ($) {
       success: function (response) {
         // Pour voir toute la réponse
         $(".photos_list").empty().html(response.html);
-        //initLightbox(); 
         event.preventDefault();  //empeche le rechargement du formulaire
+        initLightbox(); 
       },
     });
   });

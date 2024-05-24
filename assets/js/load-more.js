@@ -1,8 +1,4 @@
 /* script ajax permettant de charger plus de photos */
-
-
-console.log(ajax_object.ajaxurl);
-
 (function ($) {
     $(document).ready(function () {
 
@@ -29,7 +25,11 @@ console.log(ajax_object.ajaxurl);
           // si la requete fonctionne
           success: function (res) {             
             $(".photos_list").append(res.html); // Ajoute le contenu à la galerie existante
-            initLightbox(); 
+            if (typeof initLightbox === 'function') {
+              initLightbox();
+          } else {
+              console.error('initLightbox non defined');
+          }
             if (currentPage >= res.max) {  //s'il n'y a plus de photos on masque le bouton
               $("#load-more-btn").hide();
             }

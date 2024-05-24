@@ -484,6 +484,44 @@ nav a:hover {
   opacity: 1;
 }
 
+.filter-options {
+  max-width: 80%;
+  display: flex;
+  padding-top: 40px;
+  text-align: center;
+  justify-content: start;
+  margin: 0 auto;
+}
+
+select {
+  font-family: Poppins;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 18px;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+#category_filter,
+#format_filter,
+#sort_order {
+  width: 260px;
+  height: 42px;
+  padding: 11px 18px 11px 18px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  border: 1.3px solid #B8BBC2;
+  justify-content: space-between;
+}
+
+#category_filter {
+  margin-right: 42px;
+}
+
+#sort_order {
+  margin-left: 650px;
+}
+
 .banner-style {
   width: 100%;
   height: 100vh;
@@ -673,6 +711,7 @@ nav a:hover {
   }
 }
 .lightbox {
+  display: none; /* Hidden by default */
   position: fixed; /* reste donc à la même position */
   z-index: 10; /*  */
   left: 0;
@@ -680,12 +719,14 @@ nav a:hover {
   width: 100%; /* pleine largeur */
   height: 100%; /* pleine hauteur */
   overflow: auto;
-  background-color: rgba(0, 0, 0, 0.9); /* opacity de 0.9 */
+  background-color: rgba(0, 0, 0, 0.8); /* opacity de 0.8 */
 }
 
 .lightbox__close {
-  width: 23px;
-  height: 23px;
+  background-image: url("assets/images/close.png");
+  background-repeat: no-repeat;
+  width: 25px;
+  height: 25px;
   position: fixed;
   top: 50px;
   right: 31px;
@@ -694,33 +735,37 @@ nav a:hover {
 }
 
 .lightbox__prev {
+  background-image: url("assets/images/precedente.png");
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
   display: flex;
   align-items: center;
-  height: 100%;
-  width: 108px;
+  height: 100vh;
+  width: 110px;
   position: fixed;
-  left: 20px;
+  left: 10%;
   cursor: pointer;
   z-index: 10;
 }
 .lightbox__prev:hover {
-  transform: translateX(-10px);
-  transition: 1s ease-in-out;
+  transform: scale(1.2);
 }
 
 .lightbox__next {
+  background-image: url("assets/images/suivante.png");
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
   display: flex;
   align-items: center;
-  height: 100%;
-  width: 93px;
+  height: 100vh;
+  width: 110px;
   position: fixed;
-  right: 33px;
+  right: 10%;
   cursor: pointer;
   z-index: 10;
 }
 .lightbox__next:hover {
-  transform: translateX(10px);
-  transition: 1s ease-in-out;
+  transform: scale(1.2);
 }
 
 .lightbox__container {

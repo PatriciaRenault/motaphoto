@@ -9,7 +9,7 @@
         <form id="filter-form" method="GET">  <!--les données du formulaire seront envoyées à l'URL de la page actuelle via une requête GET -->
 
             <!-- catégories -->
-            <select name="category_filter">    <!--menu déroulant "category_filter" -->
+            <select name="category_filter" id="category_filter">    <!--menu déroulant "category_filter" -->
 
                 <option value="">Catégories</option>
 
@@ -22,7 +22,7 @@
             </select>
 
             <!-- menu deroulant formats -->
-            <select name="format_filter">
+            <select name="format_filter" id="format_filter">
                 <option value="">Formats</option>
                 <?php
                     $formats = get_terms('format');
@@ -33,7 +33,7 @@
             </select>
 
             <!-- Pour le tri par années -->
-            <select name="sort_order">
+            <select name="sort_order" id="sort_order">
                 <option value="">Trier par </option>
                 <option value="date-DESC">A partir des plus récentes</option>
                 <option value="date-ASC">A partir des plus anciennes</option>

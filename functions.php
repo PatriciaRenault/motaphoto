@@ -11,63 +11,44 @@ function montheme_supports()
 }
 add_action('after_setup_theme', 'montheme_supports');
 
+// ENREGISTREMENT DES STYLES ET DES SCRIPTS
+function enqueue_motaphoto_assets() {
+    // Ajout du CSS
+    wp_enqueue_style('motaphoto-style', get_template_directory_uri() . '/style.css', array(), '1.0');
 
-// LIENS AVEC LES STYLES
-function enqueue_motaphoto_styles() {
-    //ajout du CSS
-    wp_enqueue_style('style', get_template_directory_uri() . '/style.css', array(), '1.0');
-}
-// Action pour ajouter la fonction à la file d'attente des styles
-add_action('wp_enqueue_scripts', 'enqueue_motaphoto_styles');
-
-
-// LIENS AVEC LES SCRIPTS
-function enqueue_motaphoto_scripts() {
-
-    // script JS
-    wp_enqueue_script('script', get_template_directory_uri() . '/assets/js/script.js', array(), '1.0', true);
+    // Ajout du script de la lightbox
     wp_enqueue_script('lightbox-scripts', get_template_directory_uri() . '/assets/js/lightbox.js', array('jquery'), null, true);
 
-    // ajout de la configuration ajax pour les boutons charger plus
-   wp_enqueue_script('load-more', get_template_directory_uri() . '/assets/ajax/load-more.js', [ 'jquery' ],  '1.0',true );
-    // Définir la variable ajax_object pour une utilisation dans le script JavaScript
-    wp_localize_script('load-more', 'ajax_object', array('ajax_url' => admin_url('admin-ajax.php')));
-    
+    // Script principal
+    wp_enqueue_script('motaphoto-script', get_template_directory_uri() . '/assets/js/script.js', array('jquery', 'lightbox-scripts'), '1.0', true);
 
-    //enregistrement du script ajax-filter pour gerer les filtres ajax
-    wp_enqueue_script('ajax-filter', get_template_directory_uri() . '/assets/ajax/filter.js', [ 'jquery' ], '1.0', true);
-    //localise le script ajax-filter = permet d'effectuer des requêtes AJAX vers le point d'accès AJAX de WordPress à partir de votre script JavaScript.
-    wp_localize_script('ajax-filter', 'afp_vars', array('afp_ajax_url' => admin_url('admin-ajax.php')));
-    
-    //wp_enqueue_script('ajax-function', get_template_directory_uri() . '/assets/js/ajax.js', [ 'jquery' ], '1.0', true);
+    // Ajout de la configuration AJAX pour les boutons "Charger plus"
+    wp_enqueue_script('load-more', get_template_directory_uri() . '/assets/js/load-more.js', array('jquery'), '1.0', true);
 
-    // localise le script ajax_params =>permet d'effectuer des requêtes AJAX vers le point d'accès AJAX de WordPress à partir du script JavaScript.
-    //wp_localize_script('script', 'ajax_params', array('ajaxurl' => admin_url('admin-ajax.php')));
+    // Enregistrement du script ajax-filter pour gérer les filtres AJAX
+    wp_enqueue_script('ajax-filter', get_template_directory_uri() . '/assets/js/filter.js', array('jquery'), '1.0', true);
 
-   // Enregistrez le script principal
-   //wp_enqueue_script('ajax_script', get_template_directory_uri() . '/assets/js/ajax.js', array('jquery'), '1.0.0', true);
+    //injecte l'URL AJAX de WordPress (admin-ajax.php) dans le script JavaScript.
+    wp_localize_script('ajax-filter', 'ajax_object', array('ajax_url' => admin_url('admin-ajax.php')));
 
-   // Localisez le script pour passer l'URL AJAX
-   //wp_localize_script('ajax_script', 'wp_data', array('ajax_url' => admin_url('admin-ajax.php'),));
 }
-// Action pour ajouter la fonction à la file d'attente des scripts
-add_action('wp_enqueue_scripts', 'enqueue_motaphoto_scripts');
+add_action('wp_enqueue_scripts', 'enqueue_motaphoto_assets');
+
 
 
 
 // FONCTION POUR ENREGISTRER LES MENUS DE NAVIGATION
 function register_my_menus() {
     register_nav_menus( array(
-        'header' => 'Menu principal',      // Menu de navigation de l'en-tête
-        'footer' => 'Menu pied de page',  // Menu de navigation du pied de page
+        'header' => 'Menu principal',      
+        'footer' => 'Menu pied de page',  
     ) );
 }
-add_action( 'init', 'register_my_menus' );  // Action pour enregistrer les menus lors de l'initialisation de WordPress
+add_action( 'init', 'register_my_menus' );  
 
 
 
 // FONCTION CHARGEMENT DES POSTS SUPPLEMENTAIRES
-
 function load_more_photos() {
 
     //arguments de la requête pour récupérer les photos
@@ -80,6 +61,7 @@ function load_more_photos() {
     );
     console.log("paged");
 
+    //ajout des filtres
     if (isset($_POST['category_filter']) && $_POST['category_filter']) {
         $args['tax_query'][] = array(
             'taxonomy' => 'categorie',
@@ -92,29 +74,30 @@ function load_more_photos() {
         $args['tax_query'][] = array(
             'taxonomy' => 'format',
             'field' => 'slug',
-            'terms' => sanitize_text_field($_POST['format_filter']),
+            'terms' => sanitize_text_field($_POST['format_filter']),//Nettoie l'entrée pour prévenir les attaques XSS et autres.
         );
     }
-    $query = new WP_Query($args);    //Cela récupère les publications de type 'photos' selon les critères spécifiés dans `$args
+    //récupère les publications de type 'photos' selon les critères spécifiés dans `$args
+    $query = new WP_Query($args);    
 
     $response = '';
-    $max_pages = $query->max_num_pages;  //récupère le nombre maximum de pages de la requête
-
-
+    $output = '';
+    
     if ($query->have_posts()) {
-        ob_start();   //pour démarrer la mise en mémoire tampon de sortie 
-    //boucle `while` parcourt toutes les publications récupérées par la requête WP_Query et génère le HTML correspondant à chaque photo. Ce HTML est concaténé dans la variable `$response`.
+        ob_start();   //démarre la mise en mémoire tampon de sortie 
+        //parcourt les publications récupérées par la requête WP_Query et génère le HTML correspondant à chaque photo. 
         while ($query->have_posts()) :  
             $query->the_post();
-            $response .= get_template_part('template-parts/photo_block');  //récupérer le contenu HTML généré à partir du fragment de modèle 'photo_block' pour chaque photo récupérée, et de l'ajouter à la variable `$response`. Cette variable sera ensuite utilisée pour construire la réponse JSON renvoyée à la requête AJAX.
+            $response .= get_template_part('template-parts/photo_block');  //récupérer le contenu HTML généré à partir du modèle 'photo_block' pour chaque photo récupérée, et l'ajoute a `$response`. 
         endwhile;
-        $output = ob_get_contents();//récupérer tout le contenu HTML généré à partir de l'exécution de la fonction load_more_photos() et de le stocker dans la variable $output.
-        ob_end_clean();// nettoyer et désactiver la mise en mémoire tampon 
+        //Récupére le HTML généré et nettoie la mémoire tampon
+        $output = ob_get_clean();
+       
     }
-    else {
-        $response='';
-        $output = '';
-    }
+
+    $max_pages = $query->max_num_pages;  //récupère le nombre maximum de pages de la requête
+
+    
 // tableau contenant le nombre de pages et le code html
  $result = [
     'max' => $max_pages,
@@ -122,6 +105,7 @@ function load_more_photos() {
   ];
 
  echo json_encode($result);  //encodé en JSON
+
  exit;                       //arret du script
 }
 

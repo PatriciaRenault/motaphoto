@@ -1,5 +1,3 @@
-document.addEventListener('DOMContentLoaded', function() {
-
   function initLightbox() {
     console.log("initialisation ligthbox");
 
@@ -96,7 +94,8 @@ document.addEventListener('DOMContentLoaded', function() {
           });
       }
   }
-
+  
+  document.addEventListener('DOMContentLoaded', function() {
 
   initLightbox();  
 
