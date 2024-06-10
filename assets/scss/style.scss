@@ -12,6 +12,7 @@ Text Domain: nathalie-mota
 /* CSS pour les Fonts  */
 
 @import "_fonts";
+@import'variables/_breakpoints';
 @import "variables/_colors";
 @import"_keyframes";
 @import "_header";
@@ -22,6 +23,5 @@ Text Domain: nathalie-mota
 @import "_photos_list";
 @import "_filters";
 @import "accueil";
-@import "_responsive";
 @import "_lightbox";
 

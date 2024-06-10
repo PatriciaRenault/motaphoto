@@ -1,42 +1,49 @@
-/* script ajax permettant de charger plus de photos */
+/* SCRIPT AJAX PERMETTANT DE CHARGER PLUS DE PHOTOS */
 (function ($) {
-    $(document).ready(function () {
+  $(document).ready(function () {
+    let currentPage = 1;
 
-      let currentPage = 1;
-
-      $("#load-more-btn").on("click", function () {        //ajoute un gestionnaire d'événements sur le clic du bouton avec l'ID `load-more-btn`. Lorsque ce bouton est cliqué, le code à l'intérieur de la fonction de rappel est exécuté.
-
-        currentPage++; // Incrémentation de currentPage de 1, pour charger la page suivante
-        var category = $('select[name="category_filter"]').val();    
-        var format = $('select[name="format_filter"]').val();    
-        var order = $('select[name="sort_order"]').val();
+    $("#load-more-btn").on("click", function () {        //gestionnaire d'événements 
+      currentPage++;                                     // Incrémentation de currentPage de 1, pour charger la page suivante
         
-        $.ajax({      
-          type: "POST",   ////effectue une requête AJAX POST
-          url: ajax_object.ajax_url,//vers l'URL spécifiée dans `ajax_object.ajax_url`(variable JavaScript qui contient l'URL vers le point d'API AJAX de WordPress. Cette variable est définie à l'aide de la fonction wp_localize_script() dans votre code PHP WordPress.)
-          dataType: "json",//`dataType: "json"` vous permet de traiter la réponse de votre requête AJAX comme un objet JavaScript, ce qui facilite le traitement des données renvoyées par le serveur dans votre application front-end.
-          data: {
-            action: "load_more_photos",   //l'action load_more_photo est  utilisée pour déclencher la fonction PHP qui gère la récupération et le chargement supplémentaire de photos via AJAX.
-            paged: currentPage, // on souhaite recuperer la page actuelle
-            category_filter: category,
-            format_filter: format,
-            sort_order: order
-          },
-          // si la requete fonctionne
-          success: function (res) {             
-            $(".photos_list").append(res.html); // Ajoute le contenu à la galerie existante
-            if (typeof initLightbox === 'function') {
-              initLightbox();
+      // Recupere les valeurs des filtres
+      var category = $('select[name="category_filter"]').val();    
+      var format = $('select[name="format_filter"]').val();    
+      var order = $('select[name="sort_order"]').val();
+        
+      // Requete AJAX POST
+      $.ajax({      
+        type: "POST",   
+        url: ajax_object.ajax_url,// URL vers le point d'API AJAX de WordPress
+        dataType: "json",// Permet de traiter la réponse comme un objet JavaScript
+        data: {
+          action: "load_more_photos",   
+          paged: currentPage, 
+          category_filter: category,
+          format_filter: format,
+          sort_order: order
+        },
+        // si la requete reussit
+        success: function (res) {             
+          $(".photos_list").append(res.html); // Ajoute le contenu à la galerie existante
+
+          // Initialise la ligthbox si elle existe
+          if (typeof initLightbox === 'function') {
+            initLightbox();
           } else {
-              console.error('initLightbox non defined');
+            console.error('initLightbox non defined');
           }
-            if (currentPage >= res.max) {  //s'il n'y a plus de photos on masque le bouton
-              $("#load-more-btn").hide();
-            }
-          },
-        });
+        
+          // Cache le bouton s'il n'y a plus de photos à charger
+          if (currentPage >= res.max) {  
+            $("#load-more-btn").hide();
+          }
+        },
+        // gestionnaire d'erreurs pour aider au débogage
+        error: function (jqXHR, textStatus, errorThrown) {
+          console.error('Erreur AJAX: ' + textStatus, errorThrown);
+        }
       });
     });
-    
-  
-  })(jQuery);
+  });
+})(jQuery);

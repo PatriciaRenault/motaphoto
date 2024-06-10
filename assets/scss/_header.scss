@@ -1,40 +1,40 @@
-/* Header */
-*, ::before, ::after{
+/* HEADER */
+* {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
 body{
-    width: 100vw;
-    height: 100vh; 
+  font-family: "Space Mono", sans-serif;
     margin: auto;
 }
-
-header{
+.container {
+  width: 100%;
+  max-width: 1148px;
+  margin: 0 auto;
+}
+header {
+  box-shadow: 0px 4px 14px 10px rgba(0, 0, 0, 0.03);
+  width: 100%;
+}
+.header{
     position: sticky;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
-    height: 10vh;
-    top:0;
-    padding: 0 10vw;
-    box-shadow: 0px 5px 15px 10px rgba(0, 0, 0, 0.1);
+    height: 80px;
     z-index: 5;
     background-color: #ffffff;
-}
+      img {
+          height: 14px;
+          width: 216px;
+      }
+  }
 
-// logo
-.logo {
-    margin-left: 100px;
-    img {
-        height: 14px;
-        width: 216px;
-    }
-}
 
-// menu de navigation
+
+/* menu de navigation */
 nav {
     ul {
       display: flex;
@@ -42,12 +42,12 @@ nav {
     }
     
     li {
-      padding-right: 3vw;
+      padding-left: 3vw;
     }
     
     a {
       text-decoration: none;
-      font-family: 'space mono';
+      font-family: 'space mono', sans-serif;
       font-size: 16px;
       color: #000000;
       
@@ -57,7 +57,7 @@ nav {
     }
   }
   
-// icone burger
+/* icone burger */
 .burger{
     display: none;
     .line{
@@ -67,4 +67,71 @@ nav {
         margin: 5px;
     }
 }
+
+/* RESPONSIVE DU MENU BURGER */
   
+@media screen and (max-width: $tablet){
+  header{
+    box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.1);
+    padding: 0 2vw;
+    height: 72px;
+    .logo {
+      margin-left: 10px;
+      img {
+          max-width: 200px;
+      }
+    }
+  }
+  /* affichage et animation du menu burger.*/
+  nav {
+    display: none;
+    position: fixed;
+    height: 100vh;
+    top: 72px;
+    left: 0;
+    right: 0;
+    background-color: #E00000;
+    z-index: 5;
+    animation: fade-in-top 1s ease-in-out;
+    &.active {                       // si le menu doit etre affiché
+      display: block;
+    }
+    ul {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 65px;
+      li {
+        padding: 1.3em 0;
+        a {
+          color: #ffffff;
+          font-size: 30px;
+          &:hover {
+            color: #ffffff;
+          }
+        }
+      }
+    }
+  }
+
+  /* transformation de l'icone burger en forme de croix */
+  .burger {
+    display: block;
+    cursor: pointer;
+    &.open {
+        .line {
+            &:nth-child(1) {  // Cible le premier enfant de l'élément '.line'
+                transform: rotate(45deg) translate(6px, 0px);
+            }
+            &:nth-child(2) {
+                display: none;
+            }
+            &:nth-child(3) {
+                transform: rotate(-45deg) translate(6px, 0px);
+            }
+        }
+    }
+  }
+ 
+
+}

@@ -1,40 +1,82 @@
-.filter-options {
-    max-width: 80%;
-    display: flex;
-    padding-top: 40px;
-    text-align: center;
-    justify-content: start;
-    margin: 0 auto;
-  }
-  select {
-    font-family: Poppins;  
-    font-size: 12px;  
-    font-weight: 500;  
-    line-height: 18px;   
-    text-align: left;  
-    text-transform: uppercase;  
-  }
 
+.filter-options {
+  max-width: 1148px;  /* Largeur maximale - Section Filtres */
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 40px auto 20px auto;
+  flex-wrap: nowrap;
+
+  label, select {
+    font-family: Poppins;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 18px;
+    letter-spacing: 0.03em;
+    text-align: left;
+    text-transform: uppercase;
+  }
+}
+select{
+  background-color: white;
+}
+
+#filter-form {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.filters {
+  display: flex;
+  gap: 10px;
+  flex-grow: 1;
+}
+
+.sort-order {
+  margin-left: auto;
+}
 
 #category_filter,
 #format_filter,
-#sort_order{
-    width: 260px;  
-    height: 42px;  
-    padding: 11px 18px 11px 18px;  
-    margin-bottom: 20px; 
-    border-radius: 8px;  
-    border: 1.3px solid #B8BBC2;  
-    justify-content: space-between;
+#sort_order {
+  width: 260px;
+  height: 42px;
+  padding: 11px 18px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  border: 1.3px solid #B8BBC2;
+  justify-content: space-between;
 }
 
-#category_filter{
-  margin-right: 42px;
+
+
+/* Styles pour les écrans de taille moyenne (tablettes) et plus petits */
+@media (max-width: $tablet) {
+  .filter-options {
+    flex-direction: column; 
+    align-items: center;    
+    text-align: center;  
+    #filter-form {
+      flex-direction: column; 
+      gap: 10px;              
+      width: 100%;
+    } 
+    .filters, .sort-order {
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      margin-left: 0;
+      text-align: center;
+    } 
+  }
 }
 
-#sort_order{
-  margin-left: 650px;
-}
+
+
  
 
 

@@ -1,3 +1,4 @@
+// STYLE DU HERO BANNER
 .banner-style {
     width: 100%;
     height: 100vh;
@@ -11,16 +12,31 @@
             height: 100%;
             object-fit: cover;
         }
+        .titre-header {
+            width: 68vw;
+            position: absolute;
+            top: 42%;
+            left: 50%;
+            transform: translate(-50%, -50%);// centre le titre horizontalement et verticalement
+            img {
+                width: 95%;
+            }
+        }
     }
 
-
-.titre-header {
-    width: 68vw;
-    position: absolute;
-    top: 42%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    img {
-        width: 95%;
+// RESPONSIVE
+    @media screen and (max-width: $mobile){
+        .banner-style{
+        width: 100%;
+        height: 15rem;      
+        }
     }
-}
+      
+    @media screen and (min-width: $mobile) and (max-width: $laptop){
+        .banner{
+        width: 100%;
+        height: 30rem;        
+        }
+    }
+      
+
